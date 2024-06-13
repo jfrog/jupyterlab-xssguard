@@ -2,7 +2,7 @@
 
 [![Github Actions Status](https://github.com/jfrog/jupyterlab-output-iframe-extension/workflows/Build/badge.svg)](https://github.com/jfrog/jupyterlab-output-iframe-extension/actions/workflows/build.yml)
 
-A JupyterLab extension to insert code block output inso iframe.
+A JupyterLab extension to insert code block output into iframe.
 
 ## Requirements
 

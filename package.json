@@ -1,7 +1,7 @@
 {
     "name": "jupyterlab_output_iframe",
     "version": "0.1.0",
-    "description": "A JupyterLab extension to insert code block output inso iframe.",
+    "description": "A JupyterLab extension to insert code block output into iframe.",
     "keywords": [
         "jupyter",
         "jupyterlab",

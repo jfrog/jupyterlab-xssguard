@@ -1,3 +1,7 @@
+import { IRenderMimeRegistry } from '@jupyterlab/rendermime';
+import {
+  rendererFactory,
+} from './renders';
 import {
   JupyterFrontEnd,
   JupyterFrontEndPlugin
@@ -8,10 +12,13 @@ import {
  */
 const plugin: JupyterFrontEndPlugin<void> = {
   id: 'jupyterlab_output_iframe:plugin',
-  description: 'A JupyterLab extension to insert code block output inso iframe.',
+  description: 'A JupyterLab extension to insert code block output into iframe.',
   autoStart: true,
-  activate: (app: JupyterFrontEnd) => {
+  requires: [IRenderMimeRegistry],
+  activate: (app: JupyterFrontEnd,
+    rendermime: IRenderMimeRegistry) => {
     console.log('JupyterLab extension jupyterlab_output_iframe is activated!');
+    rendermime.addFactory(rendererFactory);
   }
 };
 
