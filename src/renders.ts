@@ -1,14 +1,14 @@
 import { IRenderMime, RenderedText, renderText } from '@jupyterlab/rendermime';
 
 const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
-  var iframe = document.createElement('iframe');
+  const iframe = document.createElement('iframe');
   (<any>iframe).sandbox = 'allow-scripts allow-modals';
   (<any>iframe).frameBorder = '0';
   // (<any>iframe).onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));';
 
   (<any>iframe).style = 'width:100%;border:none;overflow:hidden;';
 
-  var srcdoc =
+  const srcdoc =
     `
 <html>
 <head>
