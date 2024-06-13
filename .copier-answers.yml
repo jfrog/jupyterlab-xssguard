@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v4.3.1
+_src_path: https://github.com/jupyterlab/extension-template
+author_email: orih@jfrog.com
+author_name: Ori Hollander
+has_binder: false
+has_settings: false
+kind: frontend
+labextension_name: jupyterlab_output_iframe
+project_short_description: A JupyterLab extension to insert code block output inso
+    iframe.
+python_name: jupyterlab_output_iframe
+repository: https://github.com/jfrog/jupyterlab-output-iframe-extension
+test: true
+
