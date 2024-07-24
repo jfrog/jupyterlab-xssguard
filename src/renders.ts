@@ -2,11 +2,10 @@ import { IRenderMime, RenderedText, renderText } from '@jupyterlab/rendermime';
 
 const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
   const iframe = document.createElement('iframe');
-  (<any>iframe).sandbox = 'allow-scripts allow-modals';
-  (<any>iframe).frameBorder = '0';
+  (iframe as any).sandbox = 'allow-scripts allow-modals';
+  (iframe as any).frameBorder = '0';
   // (<any>iframe).onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));';
-
-  (<any>iframe).style = 'width:100%;border:none;overflow:hidden;';
+  (iframe as any).style = 'width:100%;border:none;overflow:hidden;';
 
   const srcdoc =
     `
