@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="1" failures="0" errors="0" time="3.018">
+  <testsuite name="jupyterlab_output_iframe" errors="0" failures="0" skipped="0" timestamp="2024-06-13T13:25:40" time="1.711" tests="1">
+    <testcase classname="jupyterlab_output_iframe should be tested" name="jupyterlab_output_iframe should be tested" time="0.002">
+    </testcase>
+  </testsuite>
+</testsuites>
