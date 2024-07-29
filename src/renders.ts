@@ -16,7 +16,7 @@ const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
 
   // Create our iframe
   const iframe = document.createElement('iframe');
-  iframe.id = "xss_guard" + iframe_counter;
+  iframe.id = 'xss_guard' + iframe_counter;
   (iframe as any).sandbox = 'allow-scripts allow-modals';
   (iframe as any).frameBorder = '0';
 
@@ -26,46 +26,50 @@ const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
 
   // Copy <style> tags from document head
   const styleElements = doc_head.querySelectorAll('style');
-  styleElements.forEach((style) => {
+  styleElements.forEach(style => {
     const clonedStyle = style.cloneNode(true) as HTMLStyleElement;
     iframeHead.appendChild(clonedStyle);
   });
 
-  // Copy link[rel="stylesheet"] from document body 
-  const linkElements = doc_body.querySelectorAll('link[rel="stylesheet"]')
-  linkElements.forEach((link) => {
-    const clonedLink = link.cloneNode(true) as HTMLLinkElement
-    iframeHead.appendChild(clonedLink)
+  // Copy link[rel="stylesheet"] from document body
+  const linkElements = doc_body.querySelectorAll('link[rel="stylesheet"]');
+  linkElements.forEach(link => {
+    const clonedLink = link.cloneNode(true) as HTMLLinkElement;
+    iframeHead.appendChild(clonedLink);
   });
-  
+
   // Set transparent background
   const iframeBody = iframe_dom.body;
   iframeBody.setAttribute('style', 'background-color: transparent;');
 
   // Add script to post height to parent when loaded
-  var scriptObj = document.createElement("script");
-  scriptObj.type = "text/javascript";
-  scriptObj.innerHTML = `
+  var scriptObj = document.createElement('script');
+  scriptObj.type = 'text/javascript';
+  scriptObj.innerHTML =
+    `
 function sendHeight()
 {
   if(parent.postMessage)
   {
       var height = document.getElementById('contents_div').offsetHeight;
-      parent.postMessage(["` + iframe.id + `", height], '*');
+      parent.postMessage(["` +
+    iframe.id +
+    `", height], '*');
   }
 }
   `;
   iframeHead.appendChild(scriptObj);
-  iframeBody.setAttribute('onload', 'sendHeight()')
+  iframeBody.setAttribute('onload', 'sendHeight()');
 
   // Add a div with class renderedText
   var div_rendered_text = document.createElement('div');
-  
+
   // We may possibly want more relevant styles here
-  div_rendered_text.className = "jp-WindowedPanel lm-Widget jp-Notebook jp-mod-scrollPastEndlm-Widget lm-Panel jp-Cell-outputWrapper jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output"
+  div_rendered_text.className =
+    'jp-WindowedPanel lm-Widget jp-Notebook jp-mod-scrollPastEndlm-Widget lm-Panel jp-Cell-outputWrapper jp-RenderedHTMLCommon jp-RenderedHTML jp-mod-trusted jp-OutputArea-output';
   // Set the div's id for sending its height
-  div_rendered_text.id = "contents_div";
-  
+  div_rendered_text.id = 'contents_div';
+
   iframe_dom.body.appendChild(div_rendered_text);
   div_rendered_text.innerHTML = options.source;
 
@@ -76,13 +80,17 @@ function sendHeight()
 
   if (!created_listener) {
     // Listen for a message from the iframe.
-    window.addEventListener("message", function(e) {
-      var id_to_find = e.data[0];
-      var o = document.getElementById(id_to_find);
-      if (o) {
-        o.setAttribute('style', 'height: ' + e.data[1] + 'px; width: 100%;');
-      }
-    }, false);
+    window.addEventListener(
+      'message',
+      function (e) {
+        var id_to_find = e.data[0];
+        var o = document.getElementById(id_to_find);
+        if (o) {
+          o.setAttribute('style', 'height: ' + e.data[1] + 'px; width: 100%;');
+        }
+      },
+      false
+    );
     created_listener = true;
   }
 };
@@ -107,8 +115,6 @@ export class MyRenderedText extends RenderedText {
 
 export const rendererFactory: IRenderMime.IRendererFactory = {
   safe: true,
-  mimeTypes: [
-    'text/html'
-  ],
+  mimeTypes: ['text/html'],
   createRenderer: options => new MyRenderedText(options)
 };
