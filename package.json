@@ -1,5 +1,5 @@
 {
-    "name": "jupyterlab_output_iframe",
+    "name": "jupyterlab_xssguard",
     "version": "0.1.1-a0",
     "description": "A JupyterLab extension to insert code block output into iframe.",
     "keywords": [
@@ -7,9 +7,9 @@
         "jupyterlab",
         "jupyterlab-extension"
     ],
-    "homepage": "https://github.com/jfrog/jupyterlab-output-iframe-extension",
+    "homepage": "https://github.com/jfrog/jupyterlab-xssguard",
     "bugs": {
-        "url": "https://github.com/jfrog/jupyterlab-output-iframe-extension/issues"
+        "url": "https://github.com/jfrog/jupyterlab-xssguard/issues"
     },
     "license": "BSD-3-Clause",
     "author": {
@@ -26,7 +26,7 @@
     "style": "style/index.css",
     "repository": {
         "type": "git",
-        "url": "https://github.com/jfrog/jupyterlab-output-iframe-extension.git"
+        "url": "https://github.com/jfrog/jupyterlab-xssguard.git"
     },
     "scripts": {
         "build": "jlpm build:lib && jlpm build:labextension:dev",
@@ -38,7 +38,7 @@
         "clean": "jlpm clean:lib",
         "clean:lib": "rimraf lib tsconfig.tsbuildinfo",
         "clean:lintcache": "rimraf .eslintcache .stylelintcache",
-        "clean:labextension": "rimraf jupyterlab_output_iframe/labextension jupyterlab_output_iframe/_version.py",
+        "clean:labextension": "rimraf jupyterlab_xssguard/labextension jupyterlab_xssguard/_version.py",
         "clean:all": "jlpm clean:lib && jlpm clean:labextension && jlpm clean:lintcache",
         "eslint": "jlpm eslint:check --fix",
         "eslint:check": "eslint . --cache --ext .ts,.tsx",
@@ -95,7 +95,7 @@
     },
     "jupyterlab": {
         "extension": true,
-        "outputDir": "jupyterlab_output_iframe/labextension"
+        "outputDir": "jupyterlab_xssguard/labextension"
     },
     "eslintIgnore": [
         "node_modules",

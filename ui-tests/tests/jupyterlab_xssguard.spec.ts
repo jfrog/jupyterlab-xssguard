@@ -16,8 +16,6 @@ test('should emit an activation console message', async ({ page }) => {
   await page.goto();
 
   expect(
-    logs.filter(
-      s => s === 'JupyterLab extension jupyterlab_output_iframe is activated!'
-    )
+    logs.filter(s => s === 'JupyterLab extension jupyterlab_xssguard is activated!')
   ).toHaveLength(1);
 });

@@ -1,6 +1,6 @@
-# jupyterlab_output_iframe
+# jupyterlab_xssguard
 
-[![Github Actions Status](https://github.com/jfrog/jupyterlab-output-iframe-extension/workflows/Build/badge.svg)](https://github.com/jfrog/jupyterlab-output-iframe-extension/actions/workflows/build.yml)
+[![Github Actions Status](https://github.com/jfrog/jupyterlab-xssguard/workflows/Build/badge.svg)](https://github.com/jfrog/jupyterlab-xssguard/actions/workflows/build.yml)
 
 This extension is still experimental, not for production use.
 
@@ -15,7 +15,7 @@ A JupyterLab extension to insert code block output into iframe.
 To install the extension, execute:
 
 ```bash
-pip install jupyterlab_output_iframe
+pip install jupyterlab_xssguard
 ```
 
 ## Uninstall
@@ -23,7 +23,7 @@ pip install jupyterlab_output_iframe
 To remove the extension, execute:
 
 ```bash
-pip uninstall jupyterlab_output_iframe
+pip uninstall jupyterlab_xssguard
 ```
 
 ## Contributing
@@ -38,7 +38,7 @@ The `jlpm` command is JupyterLab's pinned version of
 
 ```bash
 # Clone the repo to your local environment
-# Change directory to the jupyterlab_output_iframe directory
+# Change directory to the jupyterlab_xssguard directory
 # Install package in development mode
 pip install -e "."
 # Link your development version of the extension with JupyterLab
@@ -67,12 +67,12 @@ jupyter lab build --minimize=False
 ### Development uninstall
 
 ```bash
-pip uninstall jupyterlab_output_iframe
+pip uninstall jupyterlab_xssguard
 ```
 
 In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
 command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
-folder is located. Then you can remove the symlink named `jupyterlab_output_iframe` within that folder.
+folder is located. Then you can remove the symlink named `jupyterlab_xssguard` within that folder.
 
 ### Testing the extension
 

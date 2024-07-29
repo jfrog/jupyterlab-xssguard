@@ -6,10 +6,10 @@ author_name: Ori Hollander
 has_binder: false
 has_settings: false
 kind: frontend
-labextension_name: jupyterlab_output_iframe
-project_short_description: A JupyterLab extension to insert code block output inso
-    iframe.
-python_name: jupyterlab_output_iframe
-repository: https://github.com/jfrog/jupyterlab-output-iframe-extension
+labextension_name: jupyterlab_xssguard
+project_short_description: A JupyterLab extension to insert code block html output
+    into iframe.
+python_name: jupyterlab_xssguard
+repository: https://github.com/jfrog/jupyterlab-xssguard
 test: true
 
