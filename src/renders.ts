@@ -1,14 +1,14 @@
 import { IRenderMime, RenderedText, renderText } from '@jupyterlab/rendermime';
 
-var iframe_counter = 0;
+let iframe_counter = 0;
 const MAX_IFRAMES = 100000;
 
 // Listen for messages from the iframes.
 window.addEventListener(
   'message',
-  function (e) {
-    var id_to_find = e.data[0];
-    var o = document.getElementById(id_to_find);
+  e => {
+    const id_to_find = e.data[0];
+    const o = document.getElementById(id_to_find);
     if (o) {
       o.setAttribute('style', 'height: ' + e.data[1] + 'px; width: 100%;');
     }
@@ -18,7 +18,8 @@ window.addEventListener(
 
 const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
   // Set a counter for unique iframe ids
-  if (iframe_counter == MAX_IFRAMES) {
+  if (iframe_counter === MAX_IFRAMES) {
+    console.log("Exceeded max iframes");
     return;
   }
   iframe_counter++;
@@ -32,7 +33,7 @@ const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
   (iframe as any).sandbox = 'allow-scripts allow-modals';
   (iframe as any).frameBorder = '0';
 
-  var iframe_dom = document.implementation.createHTMLDocument();
+  const iframe_dom = document.implementation.createHTMLDocument();
 
   const iframeHead = iframe_dom.head;
 
@@ -55,7 +56,7 @@ const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
   iframeBody.setAttribute('style', 'background-color: transparent;');
 
   // Add script to post height to parent when loaded
-  var scriptObj = document.createElement('script');
+  const scriptObj = document.createElement('script');
   scriptObj.type = 'text/javascript';
   scriptObj.innerHTML =
     `
@@ -80,7 +81,7 @@ function loadIframe()
   iframeBody.setAttribute('onload', 'loadIframe()');
 
   // Add a div with class renderedText
-  var div_rendered_text = document.createElement('div');
+  const div_rendered_text = document.createElement('div');
 
   // We may possibly want more relevant styles here
   div_rendered_text.className =
