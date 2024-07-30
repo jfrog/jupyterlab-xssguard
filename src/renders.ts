@@ -1,8 +1,20 @@
 import { IRenderMime, RenderedText, renderText } from '@jupyterlab/rendermime';
 
 var iframe_counter = 0;
-var created_listener = false;
 const MAX_IFRAMES = 100000;
+
+// Listen for messages from the iframes.
+window.addEventListener(
+  'message',
+  function (e) {
+    var id_to_find = e.data[0];
+    var o = document.getElementById(id_to_find);
+    if (o) {
+      o.setAttribute('style', 'height: ' + e.data[1] + 'px; width: 100%;');
+    }
+  },
+  false
+);
 
 const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
   // Set a counter for unique iframe ids
@@ -49,17 +61,23 @@ const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
     `
 function sendHeight()
 {
-  if(parent.postMessage)
+  if(parent.postMessage && document.getElementById('contents_div').offsetHeight)
   {
-      var height = document.getElementById('contents_div').offsetHeight;
-      parent.postMessage(["` +
+    var height = document.getElementById('contents_div').offsetHeight;
+    parent.postMessage(['` +
     iframe.id +
-    `", height], '*');
+    `', height], '*');
   }
+}
+
+function loadIframe()
+{
+  sendHeight();
+  setInterval('sendHeight()', 1000);
 }
   `;
   iframeHead.appendChild(scriptObj);
-  iframeBody.setAttribute('onload', 'sendHeight()');
+  iframeBody.setAttribute('onload', 'loadIframe()');
 
   // Add a div with class renderedText
   var div_rendered_text = document.createElement('div');
@@ -77,22 +95,6 @@ function sendHeight()
 
   options.host.append(iframe);
   iframe.srcdoc = iframe_srcdoc;
-
-  if (!created_listener) {
-    // Listen for a message from the iframe.
-    window.addEventListener(
-      'message',
-      function (e) {
-        var id_to_find = e.data[0];
-        var o = document.getElementById(id_to_find);
-        if (o) {
-          o.setAttribute('style', 'height: ' + e.data[1] + 'px; width: 100%;');
-        }
-      },
-      false
-    );
-    created_listener = true;
-  }
 };
 
 export class MyRenderedText extends RenderedText {
