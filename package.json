@@ -1,6 +1,6 @@
 {
     "name": "jupyterlab_xssguard",
-    "version": "0.1.1-a0",
+    "version": "0.1.2-a0",
     "description": "A JupyterLab extension to insert code block output into iframe.",
     "keywords": [
         "jupyter",
