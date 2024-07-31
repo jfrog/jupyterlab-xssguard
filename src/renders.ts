@@ -19,7 +19,7 @@ window.addEventListener(
 const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
   // Set a counter for unique iframe ids
   if (iframe_counter === MAX_IFRAMES) {
-    console.log("Exceeded max iframes");
+    console.log('Exceeded max iframes');
     return;
   }
   iframe_counter++;
@@ -30,7 +30,8 @@ const wrapWithIFrame = async (options: renderText.IRenderOptions) => {
   // Create our iframe
   const iframe = document.createElement('iframe');
   iframe.id = 'xss_guard' + iframe_counter;
-  (iframe as any).sandbox = 'allow-scripts allow-forms allow-modals allow-orientation-lock allow-pointer-lock';
+  (iframe as any).sandbox =
+    'allow-scripts allow-forms allow-modals allow-orientation-lock allow-pointer-lock';
   (iframe as any).frameBorder = '0';
 
   const iframe_dom = document.implementation.createHTMLDocument();
