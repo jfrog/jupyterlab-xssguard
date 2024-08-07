@@ -2,8 +2,6 @@
 
 [![Github Actions Status](https://github.com/jfrog/jupyterlab-xssguard/workflows/Build/badge.svg)](https://github.com/jfrog/jupyterlab-xssguard/actions/workflows/build.yml)
 
-This extension is still experimental, not for production use.
-
 A JupyterLab extension that mitigates XSS attacks by sandboxing the HTML output element of code cells.
 
 The extension works by embedding the HTML output of code cells inside a sandboxed iframe, that disallows access to its parent document.

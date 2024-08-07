@@ -2,8 +2,12 @@
 
 <!-- <START NEW CHANGELOG ENTRY> -->
 
-## 1.0.0
+## 1.0.1
 
-- Initial public version
+- Minor changes.
 
 <!-- <END NEW CHANGELOG ENTRY> -->
+
+## 1.0.0
+
+- Initial public version.
