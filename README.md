@@ -12,11 +12,11 @@ In case of an XSS attack such as [CVE-2024-27132](https://research.jfrog.com/vul
 
 ### No XSSGuard
 
-![before](images/before.png)
+![before](https://raw.githubusercontent.com/jfrog/jupyterlab-xssguard/main/images/before.png)
 
 ### With XSSGuard
 
-![after](images/after.png)
+![after](https://raw.githubusercontent.com/jfrog/jupyterlab-xssguard/main/images/after.png)
 
 ## Requirements
 
@@ -26,7 +26,7 @@ In case of an XSS attack such as [CVE-2024-27132](https://research.jfrog.com/vul
 
 We recommend installing the extension through JupyterLab's Extension Manager -
 
-![install](images/install.png)
+![install](https://raw.githubusercontent.com/jfrog/jupyterlab-xssguard/main/images/install.png)
 
 For a standalone installation, execute:
 
